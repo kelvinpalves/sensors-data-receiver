@@ -1,11 +1,10 @@
 package com.forgeit.sensors.temperature.infra.rest;
 
 import com.forgeit.sensors.temperature.usecase.AddTemperatureInputBoundary;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/public/sensors/temperature")
@@ -14,6 +13,10 @@ public class TemperatureSensorController {
 
     private final AddTemperatureInputBoundary addTemperature;
 
+    @Operation(description = "Está funcionalidade deve ser utilizada para registrar as temperaturas retornadas pelos sensores.",
+            summary = "Adicionar registro de temperatura",
+            tags = "Temperatura")
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public void create(@RequestBody AddTemperatureDto dto) {
         try {
