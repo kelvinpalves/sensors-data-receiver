@@ -1,1 +1,1 @@
-# data-receiver-from-sensors
+# Sensors data receiver
